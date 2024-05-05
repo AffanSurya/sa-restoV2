@@ -1,4 +1,4 @@
-<x-layout class="bg-gradient-primary">
+<x-base class="bg-gradient-primary">
     <x-slot:title>Login</x-slot:title>
 
     <div class="container">
@@ -68,4 +68,4 @@
 
     </div>
 
-</x-layout>
+</x-base>
