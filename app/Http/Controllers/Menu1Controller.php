@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Menu1;
 use App\Http\Requests\StoreMenu1Request;
 use App\Http\Requests\UpdateMenu1Request;
+use App\Models\Menu1;
 
 class Menu1Controller extends Controller
 {
@@ -13,7 +13,9 @@ class Menu1Controller extends Controller
      */
     public function index()
     {
-        //
+        return view('menu1', [
+            'menu1' => Menu1::all(),
+        ]);
     }
 
     /**

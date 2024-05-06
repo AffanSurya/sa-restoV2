@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Menu1Controller;
 use App\Http\Controllers\RegisterController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -14,3 +15,5 @@ Route::post('actionregister', [RegisterController::class, 'actionRegister'])->na
 
 Route::get('home', [HomeController::class, 'index'])->name('home')->Middleware('auth');
 Route::get('actionLogout', [LoginController::class, 'actionLogout'])->name('actionLogout')->middleware('auth');
+
+Route::get('editMenu1', [Menu1Controller::class, 'index'])->name('editMenu1')->middleware('auth');
