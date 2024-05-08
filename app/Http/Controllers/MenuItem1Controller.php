@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreMenu1Request;
-use App\Http\Requests\UpdateMenu1Request;
+
 use App\Models\MenuItem1;
 use Illuminate\Http\Request;
 
@@ -62,34 +61,59 @@ class MenuItem1Controller extends Controller
      */
     public function show($id)
     {
-        return view('menuItem1.show', [
-            'menuItem' => MenuItem1::findOrFail($id),
-            'user' => auth()->user()
-        ]);
+        //
     }
 
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(MenuItem1 $menuItem1)
+    public function edit($id)
     {
-        //
+        return view('menuItem1.edit', [
+            'menuItem' => MenuItem1::findOrFail($id),
+            'user' => auth()->user()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, MenuItem1 $menu1)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'category' => 'required',
+            'image' => 'required|url',
+        ]);
+
+        $menuItem1 = MenuItem1::findOrFail($id);
+
+        $menuItem1->update([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
+            'category' => $request->input('category'),
+            'image' => $request->input('image'),
+        ]);
+
+        session()->flash('success', 'Item Berhasil Diedit');
+
+        return redirect()->route('menuItem1');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MenuItem1 $menu1)
+    public function destroy($id)
     {
-        //
+        $menuItem1 = MenuItem1::findOrFail($id);
+        $menuItem1->delete();
+
+        session()->flash('success', 'Item Berhasil Dihapus');
+
+        return redirect()->route('menuItem1');
     }
 }

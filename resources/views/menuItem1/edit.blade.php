@@ -24,7 +24,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('menuItem1.store') }}" method="POST" class="user">
+                    <form action="{{ route('menuItem1.update', $menuItem->id) }}" method="POST" class="user">
                         @csrf
                         @method('PUT')
 

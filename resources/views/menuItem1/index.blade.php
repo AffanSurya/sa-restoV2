@@ -33,18 +33,28 @@
                         <p class="card-text">{{ Str::limit($item->description, 30, '...') }}</p>
                         <p class="card-text">Kategori: {{ $item->category }}</p>
                         <p class="card-text">Harga: Rp{{ intval($item->price) }}</p>
-                        <a href="{{ route('menuItem1.show', $item->id) }}" class="btn btn-warning btn-icon-split">
-                            <span class="icon text-white-50">
-                                <i class="fas fa-info-circle"></i>
-                            </span>
-                            <span class="text">Edit</span>
-                        </a>
-                        <button class="btn btn-danger btn-icon-split">
-                            <span class="icon text-white-50">
-                                <i class="fas fa-trash"></i>
-                            </span>
-                            <span class="text">Hapus</span>
-                        </button>
+
+                        <div class="d-flex">
+                            <form action="{{ route('menuItem1.destroy', $item->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-icon-split">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-trash"></i>
+                                    </span>
+                                    <span class="text">Hapus</span>
+                                </button>
+                            </form>
+
+                            <a href="{{ route('menuItem1.edit', $item->id) }}"
+                                class="btn btn-warning ml-5 btn-icon-split">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-info-circle"></i>
+                                </span>
+                                <span class="text">Edit</span>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
             @endforeach
