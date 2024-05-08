@@ -3,17 +3,23 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Menu1Controller;
+use App\Http\Controllers\MenuItem1Controller;
 use App\Http\Controllers\RegisterController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [LoginController::class, 'login'])->name('login');
+Route::get('login', [LoginController::class, 'login'])->name('login');
 Route::post('actionLogin', [LoginController::class, 'actionLogin'])->name('actionLogin');
 
 Route::get('register', [RegisterController::class, 'register'])->name('register');
 Route::post('actionregister', [RegisterController::class, 'actionRegister'])->name('actionRegister');
 
-Route::get('home', [HomeController::class, 'index'])->name('home')->Middleware('auth');
+Route::get('/', [HomeController::class, 'index'])->name('home')->Middleware('auth');
 Route::get('actionLogout', [LoginController::class, 'actionLogout'])->name('actionLogout')->middleware('auth');
 
-Route::get('editMenu1', [Menu1Controller::class, 'index'])->name('editMenu1')->middleware('auth');
+Route::get('/menuItem1', [MenuItem1Controller::class, 'index'])->name('menuItem1')->middleware('auth');
+
+Route::get('/menuItem1/create', [MenuItem1Controller::class, 'create'])->name('menuItem1.create')->middleware('auth');
+Route::post('/menuItem1/store', [MenuItem1Controller::class, 'store'])->name('menuItem1.store')->middleware('auth');
+
+Route::get('/menuItem1/show/{id}', [MenuItem1Controller::class, 'show'])->name('menuItem1.show')->middleware('auth');

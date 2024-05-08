@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal('price');
             $table->string('category');
             $table->string('image');
-            $table->string('status');
+            $table->string('status')->default('available');
             $table->timestamps();
         });
     }

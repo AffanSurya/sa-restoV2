@@ -1,6 +1,7 @@
 <x-layout>
     <x-slot:title>Home</x-slot:title>
     <x-slot:user>{{ $user->name }}</x-slot:user>
+    <x-slot:role>{{ $user->role }}</x-slot:role>
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
