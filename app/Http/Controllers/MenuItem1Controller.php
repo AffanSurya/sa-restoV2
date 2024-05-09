@@ -48,7 +48,6 @@ class MenuItem1Controller extends Controller
             'price' => $request->input('price'),
             'category' => $request->input('category'),
             'image' => $request->input('image'),
-            'status' => 'available',
         ]);
 
         session()->flash('success', 'Item Berhasil Ditambahkan');
