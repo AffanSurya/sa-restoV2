@@ -3,7 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\MenuItem1;
-use App\Models\MenuItem2;
+use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,15 +16,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        User::factory(10)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
 
         MenuItem1::factory(10)->create();
-
-        MenuItem2::factory(10)->create();
+        Order::factory(10)->create();
+        OrderItem::factory(10)->create();
     }
 }
