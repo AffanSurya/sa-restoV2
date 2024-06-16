@@ -49,4 +49,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // Orm relation
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }
