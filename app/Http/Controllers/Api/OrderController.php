@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\OrderCollection;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        return new OrderCollection(Order::with('user', 'orderItems')->get());
     }
 
     /**
@@ -21,7 +22,10 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'user_id' => 'required|exists:user,id',
+
+        ]);
     }
 
     /**

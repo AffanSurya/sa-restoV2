@@ -25,6 +25,6 @@ class DatabaseSeeder extends Seeder
 
         MenuItem1::factory(10)->create();
         Order::factory(10)->create();
-        OrderItem::factory(10)->create();
+        OrderItem::factory(50)->create();
     }
 }

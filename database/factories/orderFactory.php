@@ -19,6 +19,7 @@ class orderFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
+            'table_number' => $this->faker->randomNumber(1),
             'total_price' => $this->faker->randomFloat(200000, 100000, 500000),
             'status' => $this->faker->randomElement(['pending', 'processing', 'completed', 'cancelled']),
         ];
