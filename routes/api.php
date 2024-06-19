@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\LogoutController;
+use App\Http\Controllers\Api\MenuItem1Controller;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\OrderItemController;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\ApiMenuItem1Controller;
 use Illuminate\Http\Request;
@@ -30,5 +32,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) { //coba
     return $request->user();
 });
 
+// Route api menu item 1
+Route::get('/menuItem1', [MenuItem1Controller::class, 'index']);
+Route::post('/menuItem1/store', [MenuItem1Controller::class, 'store']);
+Route::get('/menuItem1/show/{id}', [MenuItem1Controller::class, 'show']);
+Route::put('/menuItem1/update/{id}', [MenuItem1Controller::class, 'update']);
+Route::delete('/menuItem1/delete/{id}', [MenuItem1Controller::class, 'destroy']);
+
 // Route api order
 Route::get('/order', [OrderController::class, 'index']);
+Route::post('/order/store', [OrderController::class, 'store']);
+Route::get('/order/show/{id}', [OrderController::class, 'show']);
+Route::put('/order/update/{id}', [OrderController::class, 'update']);
+Route::delete('/order/delete/{id}', [OrderController::class, 'destroy']);
+
+// Route api order item
+Route::post('/orderItem/store', [OrderItemController::class, 'store']);
