@@ -20,8 +20,8 @@ class orderItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'order_id' => Order::factory(),
-            'menu_item_id' => MenuItem1::factory(),
+            'order_id' => Order::inRandomOrder()->first()->id,
+            'menu_item_id' => MenuItem1::inRandomOrder()->first()->id,
             'quantity' => $this->faker->numberBetween(1, 10),
             'price' => $this->faker->randomFloat(200000, 100000, 500000),
         ];
