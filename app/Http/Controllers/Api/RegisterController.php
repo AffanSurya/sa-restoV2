@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -26,11 +27,15 @@ class RegisterController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
+        $name = $request->input('name');
+        $role = Str::endsWith($name, 'admin') ? 'admin' : 'user';
+
         // create user
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'role' => $role
         ]);
 
         // return response JSON insert success
