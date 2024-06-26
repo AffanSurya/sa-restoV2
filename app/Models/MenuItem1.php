@@ -23,6 +23,6 @@ class MenuItem1 extends Model
     // Orm relation
     public function orderItems()
     {
-        return $this->hasMany(OrderItem::class);
+        return $this->hasMany(OrderItem::class, 'menu_item_id', 'id');
     }
 }

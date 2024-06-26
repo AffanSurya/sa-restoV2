@@ -17,11 +17,12 @@ class MenuItem1Resource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'description' => $this->description,
             'price' => $this->price,
             'category' => $this->category,
             'image' => $this->image,
             'status' => $this->status,
+            'total_ordered' => $this->orderItems->sum('quantity'),
+
         ];
     }
 }

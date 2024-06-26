@@ -16,13 +16,13 @@ class MenuItem1Factory extends Factory
      */
     public function definition(): array
     {
-        $foodNames = ['Pizza', 'Burger', 'Pasta', 'Steak', 'Sushi', 'Salad', 'Tacos'];
+        $foodNames = ['Bruschetta', 'Garlic Bread', 'Stuffed Mushrooms', 'Grilled Chicken', 'Spaghetti Bolognese', 'Beef Wellington', 'Tiramisu', 'Cheesecake', 'Brownie', 'Mojito', 'Lemonade', 'Iced Tea'];
 
         return [
-            'name' => $this->faker->randomElement($foodNames),
+            'name' => $this->faker->unique()->randomElement($foodNames),
             'description' => $this->faker->sentence,
             'price' => $this->faker->randomElement([20000, 25000, 30000, 35000, 40000]),
-            'category' => $this->faker->randomElement(['makanan', 'minuman']),
+            'category' => $this->faker->randomElement(['makanan pembuka', 'makanan utama', 'pencuci mulut', 'minuman']),
             'image' => $this->faker->imageUrl(),
             'status' => 'available',
         ];

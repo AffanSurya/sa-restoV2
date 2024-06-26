@@ -44,7 +44,7 @@ class MenuItem1Controller extends Controller
      */
     public function show(MenuItem1 $menuItem1)
     {
-        return new MenuItem1Resource($menuItem1);
+        return new MenuItem1Resource($menuItem1->load('orderItems'));
     }
 
     /**

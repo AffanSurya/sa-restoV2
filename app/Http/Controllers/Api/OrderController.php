@@ -7,6 +7,7 @@ use App\Http\Resources\OrderCollection;
 use App\Http\Resources\OrderResource;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
 {
@@ -31,8 +32,8 @@ class OrderController extends Controller
         $order = Order::create($validatedData);
 
         return response()->json([
-            'message' => 'Order Berhasil Dibuat',
-            'order_id' => $order->id,
+            'message' => 'Order berhasil dibuat',
+            'id' => $order->id,
         ], 201);
     }
 
@@ -49,18 +50,24 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
+        Log::debug('Updating order with data:', $request->all());
+
         $validatedData = $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'table_number' => 'required|numeric',
-            'total_price' => 'required|numeric',
+            'user_id' => 'nullable|exists:users,id',
+            'table_number' => 'nullable|numeric',
+            'total_price' => 'nullable|numeric',
             'status' => 'nullable|in:pending,processing,success,cancelled',
         ]);
 
         $order->update($validatedData);
 
+        Log::debug('Updated order:', $order->toArray());
+        $order->refresh();
+        Log::debug('Updated order:', $order->toArray());
+
         return response()->json([
-            'message' => 'Order Berhasil Diupdate',
-            // 'data' => $order
+            'message' => 'Order berhasil diupdate',
+            'data' => $order
         ], 200);
     }
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class MenuItem1Collection extends ResourceCollection
 {
+    public $collects = MenuItem1Resource::class;
     /**
      * Transform the resource collection into an array.
      *
