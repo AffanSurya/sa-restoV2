@@ -25,7 +25,7 @@ class MenuItem1Controller extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'description' => 'required',
+            'description' => 'nullable',
             'price' => 'required|numeric',
             'category' => 'required',
             'image' => 'required',
@@ -54,7 +54,7 @@ class MenuItem1Controller extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'description' => 'required',
+            'description' => 'nullable',
             'price' => 'required|numeric',
             'category' => 'required',
             'image' => 'required',
