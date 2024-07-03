@@ -56,7 +56,7 @@ class OrderController extends Controller
             'user_id' => 'nullable|exists:users,id',
             'table_number' => 'nullable|numeric',
             'total_price' => 'nullable|numeric',
-            'status' => 'nullable|in:pending,processing,success,cancelled',
+            'status' => 'nullable|in:pending,processing,completed,cancelled',
         ]);
 
         $order->update($validatedData);

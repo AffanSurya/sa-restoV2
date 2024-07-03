@@ -18,7 +18,8 @@ class OrderResource extends JsonResource
             'id' => $this->id,
             'user_id' => $this->user_id,
             'user_name' => $this->user->name,
-            'orderItems' => $this->orderItems->map(function ($orderItem) {
+            'table_number' => $this->table_number,
+            'order_items' => $this->orderItems->map(function ($orderItem) {
                 return [
                     'id' => $orderItem->id,
                     'menu_item_id' => $orderItem->menu_item_id,
