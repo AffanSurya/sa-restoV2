@@ -18,6 +18,16 @@ class MenuItem1Controller extends Controller
         return new MenuItem1Collection(MenuItem1::all());
     }
 
+    public function getTopMenuItems()
+    {
+        $topMenuItems = MenuItem1::withSum('orderItems', 'quantity')
+            ->orderBy('order_items_sum_quantity', 'desc')
+            ->limit(3)
+            ->get();
+
+        return new MenuItem1Collection($topMenuItems);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
