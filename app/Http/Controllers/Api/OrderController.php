@@ -7,6 +7,7 @@ use App\Http\Resources\OrderCollection;
 use App\Http\Resources\OrderResource;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
@@ -17,6 +18,17 @@ class OrderController extends Controller
     public function index()
     {
         return new OrderCollection(Order::with('user', 'orderItems')->get());
+    }
+
+    // custom controller
+    public function getOrderStatistics()
+    {
+        $orderStats = DB::table('orders')
+            ->select(DB::raw('DATE_FORMAT(created_at, "%Y-%m") as month'), DB::raw('count(*) as count'))
+            ->groupBy(DB::raw('month'))
+            ->get();
+
+        return response()->json($orderStats);
     }
 
     /**

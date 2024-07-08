@@ -22,7 +22,7 @@ class orderItemFactory extends Factory
         return [
             'order_id' => Order::inRandomOrder()->first()->id,
             'menu_item_id' => MenuItem1::inRandomOrder()->first()->id,
-            'quantity' => $this->faker->numberBetween(1, 10),
+            'quantity' => $this->faker->numberBetween(1, 5),
             'price' => $this->faker->randomFloat(200000, 100000, 500000),
         ];
     }

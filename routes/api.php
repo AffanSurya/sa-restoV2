@@ -49,5 +49,7 @@ Route::middleware('auth:api')->group(function () {
         Route::get('/order', [OrderController::class, 'index']);
         Route::get('/order/show/{order}', [OrderController::class, 'show']);
         Route::delete('/order/delete/{order}', [OrderController::class, 'destroy']);
+
+        Route::get('/order/statistics', [OrderController::class, 'getOrderStatistics']);
     });
 });

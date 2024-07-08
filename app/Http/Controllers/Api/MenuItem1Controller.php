@@ -18,6 +18,7 @@ class MenuItem1Controller extends Controller
         return new MenuItem1Collection(MenuItem1::all());
     }
 
+    // custom controller
     public function getTopMenuItems()
     {
         $topMenuItems = MenuItem1::withSum('orderItems', 'quantity')
