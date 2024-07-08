@@ -24,7 +24,7 @@ class MenuItem1Factory extends Factory
             'price' => $this->faker->randomElement([20000, 25000, 30000, 35000, 40000]),
             'category' => $this->faker->randomElement(['makanan pembuka', 'makanan utama', 'pencuci mulut', 'minuman']),
             'image' => $this->faker->imageUrl(),
-            'status' => 'available',
+            'status' => $this->faker->randomElement(['tersedia', 'habis']),
         ];
     }
 }
