@@ -26,6 +26,7 @@ class OrderController extends Controller
         $orderStats = DB::table('orders')
             ->select(DB::raw('DATE_FORMAT(created_at, "%Y-%m") as month'), DB::raw('count(*) as count'))
             ->groupBy(DB::raw('month'))
+            ->orderBy('month', 'asc')
             ->get();
 
         return response()->json($orderStats);
