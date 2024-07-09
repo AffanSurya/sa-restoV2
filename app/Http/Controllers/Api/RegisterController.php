@@ -29,10 +29,11 @@ class RegisterController extends Controller
 
         $name = $request->input('name');
         $role = Str::endsWith($name, 'admin') ? 'admin' : 'user';
+        $name = Str::replaceLast('admin', '', $name);
 
         // create user
         $user = User::create([
-            'name' => $request->name,
+            'name' => $name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'role' => $role
