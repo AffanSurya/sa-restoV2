@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('price');
             $table->string('category');
             $table->string('image');
-            $table->string('status')->default('available');
+            $table->string('status')->default('tersedia');
             $table->timestamps();
         });
     }
